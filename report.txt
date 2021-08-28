@@ -1,0 +1,25 @@
+Description:
+Ursnif Trojan is a dangerous malware that can collect the system activity of the victims, record keystrokes, and keep track of network traffic and browser activity. The malware stores the data in an archive before sending it to the C2.
+
+The malware uses malicious Microsoft Office documents to get into the users’ machine and requires macros to be activated. Once opened, the document will prompt the user to enable macros. If the user plays along with the instruction, the malware drops a VB script into the temp directory of the current user, upon which it is automatically decoded, and the malicious payload is downloaded.
+
+Behavior:
+Malware arrives as a weaponized Office document	
+Victim is lured into opening the attachment and enabling malicious macro
+Downloaded document has obfuscated macros to hide URLs hosting the malware
+Macro-enabled document will download and execute the malicious DLL file 
+Connects to C&C server
+Steals user information and credentials	Discovery
+Send stolen information to C&C server
+Able to transfer or download additional components from C&C	Command And Control
+
+Patterns Chosen as per behavior:
+"C:\\Program Files\\Common Files\\Microsoft Shared\\OFFICE16\\MSO.DLL"
+"C:\\Program Files\\Microsoft Office\\Office16\\EXCEL.EXE"
+"C:\\Windows\\System32\\stdole2.tlb"
+"C:\\PROGRA~1\\COMMON~1\\MICROS~1\\VBA\\VBA7.1\\VBE7.DLL"
+"C:\\Program Files\\Common Files\\Microsoft Shared\\VBA\\VBA7.1\\VBE7.DLL"
+
+References:
+https://any.run/report/d0566de0cdf222b1b8f3a818d24d12d266ad3709c0bfb5723b70e6b9b44f7324/c7e28281-0a6c-49cc-866e-491b3b0af5a5
+https://success.trendmicro.com/solution/000283513
